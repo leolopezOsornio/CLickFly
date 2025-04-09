@@ -1,0 +1,5 @@
+docker buildx build --platform linux/amd64 -t gcr.io/rugged-scion-448623-i2/leocorreosapi .
+docker push gcr.io/rugged-scion-448623-i2/leocorreosapi
+gcloud run deploy leocorreosapi --image gcr.io/rugged-scion-448623-i2/leocorreosapi --platform managed --region us-central1 --allow-unauthenticated
+
+

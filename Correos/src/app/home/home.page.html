@@ -1,0 +1,34 @@
+<ion-content>
+  <div class="spinner-init" *ngIf="isLoading">
+    <img class="logo" src="assets/icon/correosLogo.png" alt="Logo">
+    <div class="loading-bar"></div>
+  </div>
+
+  <!-- Contenido del Login -->
+  <ion-card id="login-container" *ngIf="!isLoading">
+    <img style="width: 50%; height: auto;" src="assets/icon/correosLogo.png" alt="">
+    <ion-card-header>
+      <ion-card-title class="title">Iniciar Sesión</ion-card-title>
+    </ion-card-header>
+
+    <ion-card-content>
+      <ion-input class="custom-input" type="text"  placeholder="Username" [(ngModel)]="username"
+        (input)="validateFields()"></ion-input>
+      <br>
+      <span class="div_eyes">
+        <ion-input class="custom-input" [type]="passwordVisible ? 'text' : 'password'" placeholder="Password" [(ngModel)]="password"
+          (input)="validateFields()"></ion-input>
+        <ion-icon [name]="passwordVisible ? 'eye-outline' : 'eye-off-outline'" name="eye-off-outline"
+          (click)="togglePasswordVisibility()"></ion-icon>
+      </span>
+      <br>
+      <ion-button expand="full" [disabled]="!isValid" (click)="login()">Ingresar</ion-button>
+      <ion-button expand="full" fill="clear" (click)="goToRegister()" class="register-btn">Regístrate</ion-button>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Segundo Spinner: Spinner que aparece al hacer clic en "Ingresar" -->
+  <div class="spinner-login" *ngIf="showLoginSpinner">
+    <ion-spinner name="dots" color="primary"></ion-spinner>
+  </div>
+</ion-content>

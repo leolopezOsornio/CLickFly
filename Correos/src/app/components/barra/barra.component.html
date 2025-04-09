@@ -1,0 +1,20 @@
+<ion-header *ngIf="isLoggedIn" [translucent]="false">
+  <ion-toolbar [ngClass]="!isLargeScreen ? 'espacio_css' : ''">
+    <ion-title color="success">
+      {{fullName}}
+    </ion-title>
+    <ion-buttons  slot="end">
+      <ion-button class="btn_all" color="success" (click)="navegar('inicio')">
+        <ion-icon style="margin-right: 3px;" name="mail-outline"></ion-icon>
+        Ver Correos
+      </ion-button>
+      <ion-button class="btn_all" color="success" (click)="navegar('add-correo')" >
+        <ion-icon style="margin-right: 3px;" name="add-outline"></ion-icon>
+        Agregar
+      </ion-button>
+      <ion-button class="btn_all" color="danger" (click)="logout()">
+        logout
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>

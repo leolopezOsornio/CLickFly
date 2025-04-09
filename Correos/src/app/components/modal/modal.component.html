@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles del Correo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="cerrarModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="correo-detalle">
+    <div *ngIf="correo.imagen">
+      <img style="width: 35%; height: auto;" [src]="correo.imagen" alt="Imagen de {{ correo.nombre }}" class="correo-imagen">
+    </div>
+    <h2>{{ correo.nombre }}</h2>
+    <p><strong>Email:</strong> {{ correo.correo }}</p>
+    <p><strong>Nota:</strong> {{ correo.nota }}</p>
+    <p><strong>Fecha:</strong> {{ correo.date | date:'short' }}</p>
+
+    <div *ngIf="correo.latitud && correo.longitud">
+      <h3>Ubicación:</h3>
+      <div id="mapID"></div>
+    </div>
+  </div>
+</ion-content>

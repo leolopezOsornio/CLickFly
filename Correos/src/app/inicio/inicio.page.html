@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <main class="contenedor">
+    <hr>
+    <h2 [ngClass]="!isLargeScreen ? 'espacio_css' : ''" >📩 <strong>Correos guardados</strong></h2>
+
+    <ion-list  *ngIf="correos.length > 0; else noCorreos" >
+      <ion-item *ngFor="let correo of correos" (click)="mostrarCorreo(correo)">
+        <ion-thumbnail slot="start">
+          <img [src]="correo.imagen ? correo.imagen : 'assets/default-image.png'" alt="Imagen de {{ correo.nombre }}">
+        </ion-thumbnail>
+        <ion-label>
+          <h3>{{ correo.nombre }}</h3>
+          <p><strong>Email:</strong> {{ correo.correo }}</p>
+          <p><strong>Nota:</strong> {{ correo.nota }}</p>
+          <p><small>{{ correo.date | date:'short' }}</small></p>
+        </ion-label>
+
+        <!-- Botones de acción con stopPropagation() -->
+        <ion-button class="editar_correo" fill="solid" (click)="editarCorreo(correo); $event.stopPropagation()">Editar</ion-button>
+        <ion-button class="eliminar_correo" fill="solid" (click)="eliminarCorreo(correo._id); $event.stopPropagation()">Eliminar</ion-button>
+      </ion-item>
+
+    </ion-list>
+
+    <ng-template #noCorreos>
+      <p>No hay correos guardados</p>
+    </ng-template>
+  </main>
+</ion-content>

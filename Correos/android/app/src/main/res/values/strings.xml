@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">QuickMail</string>
+    <string name="title_activity_main">hola-mundo</string>
+    <string name="package_name">com.leo.correos</string>
+    <string name="custom_url_scheme">com.leo.correos</string>
+</resources>

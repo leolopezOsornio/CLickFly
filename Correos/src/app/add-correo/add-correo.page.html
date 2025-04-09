@@ -1,0 +1,39 @@
+<ion-header [translucent]="true">
+  <ion-toolbar >
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <main class="form-container">
+      <h2 [ngClass]="!isLargeScreen ? 'espacio_css' : ''">📩 <strong>Agregar correo</strong></h2>
+      <form [formGroup]="correoForm" (ngSubmit)="enviarFormulario()">
+        <ion-item>
+          <ion-label position="floating">Correo</ion-label>
+          <ion-input formControlName="correo" type="email"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Nombre</ion-label>
+          <ion-input formControlName="nombre" type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+          <ion-label position="floating">Nota</ion-label>
+          <ion-textarea formControlName="nota"></ion-textarea>
+        </ion-item>
+
+        <!-- Input de imagen -->
+        <ion-item button (click)="seleccionarImagen()">
+          <ion-label>📷 Seleccionar Imagen</ion-label>
+        </ion-item>
+
+        <!-- Vista previa de la imagen -->
+        <div *ngIf="imagenUrl">
+          <img [src]="imagenUrl" alt="Vista previa" class="imagen-previa"/>
+        </div>
+
+        <ion-button expand="full" class="insertar_correo" type="submit" [disabled]="correoForm.invalid">
+          Guardar Correo
+        </ion-button>
+      </form>
+  </main>
+</ion-content>

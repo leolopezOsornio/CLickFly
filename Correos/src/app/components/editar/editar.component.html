@@ -1,0 +1,40 @@
+<ion-header>
+  <ion-toolbar [ngClass]="!isLargeScreen ? 'espacio_css' : ''">
+    <ion-title>Editar Correo</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">Cerrar</ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <!-- Correo con tipo 'email' -->
+  <ion-item>
+    <ion-label position="floating">Correo</ion-label>
+    <ion-input [value]="correo.correo" (ionInput)="correo.correo = $event.target.value" type="email"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nombre</ion-label>
+    <ion-input [value]="correo.nombre" (ionInput)="correo.nombre = $event.target.value"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="floating">Nota</ion-label>
+    <ion-input [value]="correo.nota" (ionInput)="correo.nota = $event.target.value"></ion-input>
+  </ion-item>
+
+  <!-- Mostrar la imagen actual -->
+  <ion-item>
+    <div *ngIf="imagenUrl">
+      <img [src]="imagenUrl" alt="Imagen del correo" style="width: 30%; height: auto;" />
+    </div>
+    <ion-button (click)="seleccionarImagen()" expand="full" color="primary">
+      Cambiar Imagen
+    </ion-button>
+  </ion-item>
+  <!-- Botón de actualización deshabilitado si el formulario no es válido -->
+  <ion-button expand="full" color="success" (click)="updateCorreo()" [disabled]="!isFormValid()">
+    Actualizar Correo
+  </ion-button>
+</ion-content>
